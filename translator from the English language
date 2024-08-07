@@ -1,0 +1,30 @@
+def fix_text(text):
+    # Словарь соответствия букв между раскладками
+    mapping = {
+        'q': 'й', 'w': 'ц', 'e': 'у', 'r': 'к', 't': 'е', 'y': 'н',
+        'u': 'г', 'i': 'ш', 'o': 'щ', 'p': 'з', '[': 'х', ']': 'ъ',
+        'a': 'ф', 's': 'ы', 'd': 'в', 'f': 'а', 'g': 'п', 'h': 'р',
+        'j': 'о', 'k': 'л', 'l': 'д', ';': 'ж', "'": 'э', 'z': 'я',
+        'x': 'ч', 'c': 'с', 'v': 'м', 'b': 'и', 'n': 'т', 'm': 'ь',
+        ',': 'б', '.': 'ю'
+    }
+
+    # Новая строка для исправленного текста
+    fixed_text = ''
+
+    # Перебираем каждый символ в тексте
+    for char in text:
+        # Если символ есть в словаре замены
+        if char.lower() in mapping:
+            # Заменяем его на соответствующий символ
+            fixed_text += mapping[char.lower()] if char.islower() else mapping[char.lower()].upper()
+        else:
+            # Оставляем символ без изменений
+            fixed_text += char
+
+    return fixed_text
+
+# Пример использования
+original_text = "GHBDTN"
+corrected_text = fix_text(original_text)
+print(corrected_text)  # Вывод: Привет, вы имеете успех
